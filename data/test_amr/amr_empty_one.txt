@@ -1,0 +1,7 @@
+# ::preferred
+# ::annotator bart-amr
+# ::date 2021-11-18 15:20:03.485711
+# ::id nw.wsj_0003.12
+# ::snt From 1953 to 1955 , 9.8 billion Kent cigarettes with the filters were sold , the company said .
+# ::file nw_wsj_0003_12.txt
+(e / empty)

@@ -1,0 +1,15 @@
+# ::id nw.wsj_0001.1 ::date 2012-04-25T16:31:34 ::annotator ISI-AMR-01 ::preferred
+# ::snt Pierre Vinken , 61 years old , will join the board as a nonexecutive director Nov. 29 .
+# ::save-date Tue Sep 17, 2013 ::file nw_wsj_0001_1.txt
+(j / join-01
+      :ARG0 (p / person :wiki -
+            :name (p2 / name :op1 "Pierre" :op2 "Vinken")
+            :age (t / temporal-quantity :quant 61
+                  :unit (y / year)))
+      :ARG1 (b / board
+            :ARG1-of (h / have-org-role-91
+                  :ARG0 p
+                  :ARG2 (d2 / director
+                        :mod (e / executive :polarity -))))
+      :time (d / date-entity :month 11 :day 29))
+    

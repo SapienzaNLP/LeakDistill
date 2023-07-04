@@ -1,0 +1,83 @@
+model: facebook/bart-large
+
+penman_linearization: True
+use_pointer_tokens: True
+raw_graph: False
+
+remove_wiki: False
+dereify: False
+collapse_name_ops: False
+
+# Hparams
+batch_size: 500
+beam_size: 5
+dropout: 0.25
+attention_dropout: 0.0
+smart_init: True
+accum_steps: 10
+warmup_steps: 1
+training_steps: 40000
+grad_norm: 2.5
+scheduler: linear
+learning_rate: 0.00005
+weight_decay: 0.004
+adam_eps: 0.00000001
+max_epochs: 40
+save_checkpoints: True
+warm_start: True
+use_recategorization: False
+best_loss: False
+remove_longer_than: 1024
+
+
+align_mode: True
+
+# Silver
+align_train: silver/training/*.txt
+align_dev: amr-data-master/leamr-3/alignments/dev/*.txt
+
+log_wandb: True
+wandb_project: LeakDistill
+calc_smatch: True
+smatch_iteration: 0 # Iteration from which to start calculating SMATCH
+
+# Leak Distill parameters
+double_path: True # Turn on Leak Distill
+beta_sched_steps: 80000
+beta_start_value: 90
+beta_end_value: 10
+
+kl_multiplier: 20
+kl_temperature: 1
+exclude_orig_loss: False
+
+keep_full_graph: True # FWAG mode
+extra_nodes_mask_prob: 0.0
+extra_nodes_contract_prob: 0.0
+align_from_metadata: False
+
+clone_mode_for_dp: False
+
+fix_decoder_layers: []
+
+aux_mask_task: True
+aux_mask_ratio: 0.2
+
+# Encoder Adapter
+adapter:
+  encoder:
+    extra_nodes_as_input: False
+
+    leak_mode: False
+
+    mlp_mode: False
+    mlp_layers: []
+
+    graph_mode: False
+    graph_type: simple
+    graph_layers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    graph_params:
+      pre_transform: False
+      residual: True
+      dropout: 0.01
+      num_gnn_layers: 1
