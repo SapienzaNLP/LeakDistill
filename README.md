@@ -1,19 +1,50 @@
 # LeakDistill
-This is the repo for [Incorporating Graph Information in Transformer-based AMR Parsing](https://arxiv.org/abs/2306.13467). 
-The repo is extention of the SPRING [repo](https://github.com/SapienzaNLP/spring).
-If you use the code, please reference this work in your paper:
+This is the repo for [Incorporating Graph Information in Transformer-based AMR Parsing](https://arxiv.org/abs/2306.13467). The paper introduces a novel way to incorporate strcutural information at training time using Structural Adapters. This repo is an extention of SPRING [repo](https://github.com/SapienzaNLP/spring).
+If you use our code, please reference this work in your paper:
 
 ```
 @inproceedings{vasylenko-etal-2023-leakdistill,
     title = {Incorporating Graph Information in Transformer-based AMR Parsing},
     author = {Vasylenko, Pavlo and Huguet Cabot, Pere-Lluís and Martínez Lorenzo, Abelardo Carlos and Navigli, Roberto},
-    booktitle = {Proceedings of Findings of ACL},
+    booktitle = {Findings of ACL},
     year = {2023}
 }
 ```
-## Pretrained Checkpoints
+## Installation
+```shell script
+cd LeakDistill
+pip install -r requirements.txt
+pip install -e .
+```
 
-To obtain the checkpoints trained on AMR 2.0 or AMR 3.0, please contact either Pavlo Vasylenko or Pere-Lluís Huguet Cabot.
+## Training
+### LeakDistill
+
+```shell script
+python bin/train.py --config configs/config_leak_distill.yaml
+```
+
+### Graph Leakage Model
+
+```shell script
+python bin/train.py --config configs/config_leak.yaml
+```
+
+### Vanilla Knowledge Distillation
+
+```shell script
+python bin/train_kd.py --config configs/config_kd.yaml --teacher <path_to_checkpoint>
+```
+
+### SPRING 
+
+```shell script
+python bin/train.py --config configs/config_spring.yaml
+```
+## Pretrained Checkpoints
+- Model trained in the AMR 2.0 training set: Contact huguegcabot@babelscape.com
+
+- Model trained in the AMR 3.0 training set: Contact huguegcabot@babelscape.com
 
 ## Evaluation
 
@@ -53,30 +84,6 @@ python bin/blinkify.py \
 To have comparable Smatch scores you will also need to use the scripts available at https://github.com/mdtux89/amr-evaluation, which provide
 results that are around ~0.3 Smatch points lower than those returned by `bin/predict_amrs.py`.
 
-## Training
-
-```shell script
-python bin/train.py --config configs/config_leak_distill.yaml
-```
-
-# Graph Leakage Model
-
-```shell script
-python bin/train.py --config configs/config_leak.yaml
-```
-
-# Vanilla Knowledge Distillation
-
-```shell script
-python bin/train_kd.py --config configs/config_kd.yaml --teacher <path_to_checkpoint>
-```
-
-# SPRING 
-
-```shell script
-python bin/train.py --config configs/config_spring.yaml
-```
-
-### License
+## License
 
 This project is released under the CC-BY-NC-SA 4.0 license (see `LICENSE`). If you use LeakDistill, please reference the paper and put a link to this repo.
