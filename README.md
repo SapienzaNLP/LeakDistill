@@ -1,5 +1,5 @@
 # LeakDistill
-This is the repo for [Incorporating Graph Information in Transformer-based AMR Parsing](https://arxiv.org/abs/2306.13467). The paper introduces a novel way to incorporate strcutural information at training time using Structural Adapters. This repo is an extention of SPRING [repo](https://github.com/SapienzaNLP/spring).
+This is the repo for [Incorporating Graph Information in Transformer-based AMR Parsing](https://arxiv.org/abs/2306.13467). The paper introduces a novel way to incorporate structural information at training time using Structural Adapters. This repo is an extension of SPRING [repo](https://github.com/SapienzaNLP/spring).
 If you use our code, please reference this work in your paper:
 
 ```
@@ -42,9 +42,8 @@ python bin/train_kd.py --config configs/config_kd.yaml --teacher <path_to_checkp
 python bin/train.py --config configs/config_spring.yaml
 ```
 ## Pretrained Checkpoints
-- Model trained in the AMR 2.0 training set: Contact huguegcabot@babelscape.com
 
-- Model trained in the AMR 3.0 training set: Contact huguegcabot@babelscape.com
+For any questions or inquiries, please contact Pavlo Vasylenko at vasylen.pavlo@gmail.com or Pere-Lluís Huguet Cabot at huguetcabot@babelscape.com
 
 ## Evaluation
 
