@@ -13,3 +13,4 @@ matplotlib
 pandas
 torch-geometric
 spacy
+geomloss
